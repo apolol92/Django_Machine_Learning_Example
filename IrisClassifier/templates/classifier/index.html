@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Iris Classifier</title>
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static "classifier/style.css" %}"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Irizz</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hello, You!</h1>
+        <p>This is a simple iris classifier for plant classification. Use this website for your iris plants and
+            classify the correct iris typ.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    </div>
+</div>
+<div class="container">
+    <form class="form-horizontal" method="GET">
+        <fieldset>
+            <div id="legend">
+                <legend class="">Classify Iris Plant</legend>
+            </div>
+            <div class="col-md-offset-1 control-group">
+                <!-- Username -->
+                <label class="control-label" for="username">Sepal Length</label>
+                <div class="controls">
+                    <input type="text" id="sepal_length" name="sepal_length" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+
+            <div class="col-md-offset-1 control-group">
+                <!-- Username -->
+                <label class="control-label" for="username">Sepal Width</label>
+                <div class="controls">
+                    <input type="text" id="sepal_width" name="sepal_width" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+            <div class="col-md-offset-1 control-group">
+                <!-- Username -->
+                <label class="control-label" for="username">Petal Length</label>
+                <div class="controls">
+                    <input type="text" id="petal_length" name="petal_length" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+            <div class="col-md-offset-1 control-group">
+                <!-- Username -->
+                <label class="control-label" for="username">Petal Width</label>
+                <div class="controls">
+                    <input type="text" id="petal_width" name="petal_width" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+
+
+            <div class="col-md-offset-1 control-group row">
+                <!-- Button -->
+                <div class="controls">
+                    <button class="btn">Classify</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="col-md-offset-1">
+        {% if sepal_width %}
+            <b>Classified as</b> a {{ predictedLabel }}
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
